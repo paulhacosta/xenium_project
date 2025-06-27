@@ -357,7 +357,7 @@ x_pos = np.arange(len(cell_types))
 
 # Custom legend for the star
 star_legend = Line2D([0], [0], marker='*', color='w', label='Best Model',
-                     markerfacecolor='gold', markersize=14)
+                     markerfacecolor='black', markersize=14)
 
 for idx, tissue in enumerate(tissues):
     ax = axes[idx]
@@ -378,13 +378,13 @@ for idx, tissue in enumerate(tissues):
         if len(top_indices) == 1:
             i = top_indices[0]
             bar_x = x_pos[j] + (-1.5 + i) * bar_width
-            ax.text(bar_x, max_val + 0.015, "★", ha='center', va='bottom', fontsize=14, color='gold')
+            ax.text(bar_x, max_val + 0.015, "★", ha='center', va='bottom', fontsize=14, color='black')
         else:
             x_start = x_pos[j] + (-1.5 + top_indices[0]) * bar_width
             x_end = x_pos[j] + (-1.5 + top_indices[-1]) * bar_width
             y = max_val + 0.015
             ax.plot([x_start, x_start, x_end, x_end], [y, y + 0.01, y + 0.01, y], lw=1.5, c='black')
-            ax.text((x_start + x_end) / 2, y + 0.015, "★", ha='center', va='bottom', fontsize=14, color='gold')
+            ax.text((x_start + x_end) / 2, y + 0.015, "★", ha='center', va='bottom', fontsize=14, color='black')
 
     ax.set_xticks(x_pos)
     ax.set_xticklabels(cell_types, fontsize=20, rotation=45)
@@ -393,7 +393,7 @@ for idx, tissue in enumerate(tissues):
     ax.tick_params(axis='y', labelsize=18)
 
 axes[1].set_xlabel("Cell Type", fontsize=14)
-axes[0].set_ylabel("F1-score", fontsize=14)
+axes[0].set_ylabel("F1-score", fontsize=18)
 axes[2].legend(title="Model", bbox_to_anchor=(1.1, 1.1), loc="upper left", fontsize=10, title_fontsize=12)
 axes[2].legend(
     handles=[*[
@@ -471,12 +471,12 @@ for idx, tissue in enumerate(tissues):
         if len(top_indices) == 1:
             i = top_indices[0]
             xpos = j + (-1.5 + i) * bar_width
-            ax.text(xpos, max_val + 0.01, "★", ha='center', va='bottom', fontsize=14, color='gold')
+            ax.text(xpos, max_val + 0.01, "★", ha='center', va='bottom', fontsize=14, color='black')
         else:
             x_start = j + (-1.5 + top_indices[0]) * bar_width
             x_end = j + (-1.5 + top_indices[-1]) * bar_width
             ax.plot([x_start, x_start, x_end, x_end], [max_val+0.01, max_val+0.015, max_val+0.015, max_val+0.01], lw=1.5, c='black')
-            ax.text((x_start + x_end)/2, max_val + 0.02, "★", ha='center', va='bottom', fontsize=14, color='gold')
+            ax.text((x_start + x_end)/2, max_val + 0.02, "★", ha='center', va='bottom', fontsize=14, color='black')
 
     ax.set_xticks(x)
     ax.set_xticklabels(cell_types, fontsize=16, rotation=45, ha='right')
@@ -488,11 +488,11 @@ for idx, tissue in enumerate(tissues):
 axes[3].axis('off')
 legend_handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in custom_colors]
 legend_labels = models + ["Best Model"]
-legend_handles.append(plt.Line2D([0], [0], marker='*', color='gold', markersize=12, linestyle='None'))
+legend_handles.append(plt.Line2D([0], [0], marker='*', color='black', markersize=12, linestyle='None'))
 axes[3].legend(legend_handles, legend_labels, loc='upper left', fontsize=12, title_fontsize=14)
 
 # Common labels and layout
-fig.supylabel("F1-score", fontsize=16, x=0.01, y=0.55)
+fig.supylabel("F1-score", fontsize=18, x=0.01, y=0.55)
 fig.supxlabel("Cell Type", fontsize=16)
 plt.tight_layout()
 plt.savefig(os.path.join(save_dir, "f1_scores_lung-breast-prostate_singleR.png"), dpi=300)
