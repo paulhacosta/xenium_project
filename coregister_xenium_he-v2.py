@@ -205,7 +205,7 @@ with tf.TiffFile(he_image_path) as original_tif:
         for i, element in enumerate(meta['OME']['Image']['Pixels']['Channel']):
             channel_names.append(meta['OME']['Image']['Pixels']['Channel'][i]['Name'])
     except KeyError:
-                channel_names=None
+        channel_names=None
 
 # Expand this dictionary with more metadata if needed.
 metadata = {
