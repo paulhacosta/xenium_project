@@ -40,6 +40,16 @@ plt.yticks([])
 plt.tight_layout()
 plt.show()
 
+
+# Plot ontology embeddings heatmap (pink colormap)
+plt.figure(figsize=(8, 4))
+plt.imshow(morphology_embeddings, cmap='Greens', aspect='auto')
+plt.colorbar(ticks=[])
+plt.xticks([])
+plt.yticks([])
+plt.tight_layout()
+plt.show()
+
 #%% Single line heatmap 
 
 

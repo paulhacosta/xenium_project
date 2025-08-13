@@ -15,7 +15,7 @@ from skimage import img_as_ubyte
 import dask.array as da
 
 # %% Define slide 
-file_num = 1
+file_num = 0
 
 root_dir = "/rsrch9/home/plm/idso_fa1_pathology/TIER1/paul-xenium/TMP-IL-Pilot/20250515__183240__CIMAC_Validation"
 data_dict = {
@@ -28,7 +28,7 @@ slide_name = data_dict[xenium_folder]
 slide_file = os.path.join(root_dir, slide_name)
 # morph_file = os.path.join(root_dir, xenium_folder, "morphology_focus", "morphology_focus_0000.ome.tif")
 
-annot_path = "/rsrch9/home/plm/idso_fa1_pathology/TIER1/paul-xenium/TMP-IL-Pilot/20250515__183240__CIMAC_Validation/test_registration/individual_registration"
+annot_path = "/rsrch9/home/plm/idso_fa1_pathology/TIER1/paul-xenium/TMP-IL-Pilot/20250515__183240__CIMAC_Validation/registration"
 
 if "Meso" in os.path.basename(slide_name):
     morph_prefix = "meso1"
@@ -39,10 +39,10 @@ slide_core_path = os.path.join(annot_path, "HnE", slide_name)
 morph_core_path = os.path.join(annot_path, "morphology_focus", morph_prefix)
 
 # morph_file = os.path.join(root_dir, xenium_folder, "morphology_focus", "morphology_focus_0000.ome.tif")
-morph_annot = os.path.join(annot_path, f"{morph_prefix}_morphology_focus_0000.geojson")
+morph_annot = os.path.join(annot_path, "tma_annotations", f"{morph_prefix}_morphology_focus_0000_annot.geojson")
 # load core polygons ---------------------------------------
 gdf = gpd.read_file(morph_annot)
-gdf = gdf[gdf['isMissing'] == False].reset_index(drop=True)
+# gdf = gdf[gdf['isMissing'] == False].reset_index(drop=True)
 
 #%%
 
@@ -111,7 +111,7 @@ def write_ome_tif(filename, image, compression,
 
 
 # %%
-target_core = "D-3"  # core_name or None
+target_core = None  # core_name or None
 
 
 for idx, row in gdf.iterrows():
@@ -198,3 +198,5 @@ for idx, row in gdf.iterrows():
                 metadata=metadata, 
                 subresolutions = 7)
 
+
+# %%

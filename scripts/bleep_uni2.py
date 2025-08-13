@@ -91,7 +91,7 @@ class CFG:
         "ovarian": "Xenium_Prime_Ovarian_Cancer_FFPE_outs",
         "cervical": "Xenium_Prime_Cervical_Cancer_FFPE_outs"
     }
-    model_dir = "/rsrch9/home/plm/idso_fa1_pathology/TIER2/paul-xenium//models/public/UNI2-h"  # pretrained UNI2 weights
+    model_dir = "/rsrch9/home/plm/idso_fa1_pathology/TIER2/paul-xenium/models/public/UNI2-h"  # pretrained UNI2 weights
     ckpt_dir = f"/rsrch9/home/plm/idso_fa1_pathology/TIER2/paul-xenium//models/fine_tuned/UNI2/{args.run_name}"  # outputs
 
 

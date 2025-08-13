@@ -1,0 +1,11 @@
+slide_path: /path/to/sample.svs
+save_path: /path/to/output_dir
+coordinate_path: /path/to/cell_centroids.csv
+
+# Optional – override defaults
+slide_mpp: 0.24
+level: 0
+batch_size: 64
+num_workers: 12
+patch_size: 224
+target_mpp: 0.5
